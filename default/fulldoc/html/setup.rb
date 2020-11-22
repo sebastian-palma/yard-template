@@ -116,10 +116,6 @@ def generate_assets
   @object = Registry.root
 
   layout = Object.new.extend(T('layout'))
-  (layout.javascripts + javascripts_full_list +
-      layout.stylesheets + stylesheets_full_list).uniq.each do |file|
-    asset(file, file(file, true))
-  end
   layout.menu_lists.each do |list|
     list_generator_method = "generate_#{list[:type]}_list"
     if respond_to?(list_generator_method)
